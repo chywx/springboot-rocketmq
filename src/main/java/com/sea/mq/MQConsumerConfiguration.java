@@ -27,6 +27,7 @@ public class MQConsumerConfiguration {
     @Autowired
     private MQConsumeMsgListenerProcessor mqMessageListenerProcessor;
 
+    @Bean
     public DefaultMQPushConsumer getRocketMQConsumer(){
 
 
@@ -65,6 +66,7 @@ public class MQConsumerConfiguration {
             consumer.subscribe(topics, "*");
 
             consumer.start();
+            System.out.println(String.format("consumer is start !!! groupName:{},topics:{},namesrvAddr:{}",groupName,topics,namesrvAddr));
             //logger.info("consumer is start !!! groupName:{},topics:{},namesrvAddr:{}",groupName,topics,namesrvAddr);
 
         } catch (Exception e) {

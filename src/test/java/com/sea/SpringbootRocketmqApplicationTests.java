@@ -22,7 +22,7 @@ public class SpringbootRocketmqApplicationTests {
 
     @Test
     public void contextLoads() throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
-        String msg = "demo00099";
+        String msg = "aaa";
         Message message = new Message("DemoTopic2", "*", msg.getBytes());
         SendResult send = defaultMQProducer.send(message);
         System.out.println(send.toString());
