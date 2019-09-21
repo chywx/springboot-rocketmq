@@ -8,12 +8,18 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class MQConsumeMsgListenerProcessor implements MessageListenerConcurrently {
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
-        System.out.println("list:"+list);
+        try {
+            TimeUnit.MILLISECONDS.sleep(5005);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("list:"+list.size());
         if(CollectionUtils.isEmpty(list)){
             System.out.println("消息为空，不做处理");
             return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;

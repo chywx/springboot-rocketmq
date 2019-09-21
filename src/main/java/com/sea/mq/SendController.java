@@ -1,4 +1,4 @@
-package com.sea;
+package com.sea.mq;
 
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
@@ -6,30 +6,31 @@ import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.exception.RemotingException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class SpringbootRocketmqApplicationTests {
+/**
+ * 功能描述
+ *
+ * @author chy
+ * @date 2019/9/20 0020
+ */
+@RestController
+@RequestMapping("/msg")
+public class SendController {
 
     @Autowired
     private DefaultMQProducer defaultMQProducer;
 
-
-    @Test
-    public void contextLoads() throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
-        String msg = "aaa";
-//        Message message = new Message("DemoTopic2", "*", msg.getBytes());
-//        SendResult send = defaultMQProducer.send(message);
+    @RequestMapping("/sendTest")
+    public String sendTest() throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
+        String msg = "haha";
         for (int i = 0; i < 50; i++) {
             Message message = new Message("DemoTopic2", "*", (msg+i).getBytes());
             SendResult send = defaultMQProducer.send(message);
-            System.out.println(send.toString());
+            System.out.println("发送的消息："+ send.toString());
         }
+        return "success";
     }
-
 }

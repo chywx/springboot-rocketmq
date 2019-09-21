@@ -45,8 +45,8 @@ public class MQConsumerConfiguration {
         /**
          * 设置消费模型，集群还是广播，默认为集群
          */
-//        consumer.setMessageModel(MessageModel.CLUSTERING);
-        consumer.setMessageModel(MessageModel.BROADCASTING);
+        consumer.setMessageModel(MessageModel.CLUSTERING);
+//        consumer.setMessageModel(MessageModel.BROADCASTING);
 
         /**
          * 设置一次消费消息的条数，默认为1条
@@ -66,7 +66,7 @@ public class MQConsumerConfiguration {
             consumer.subscribe(topics, "*");
 
             consumer.start();
-            System.out.println(String.format("consumer is start !!! groupName:{},topics:{},namesrvAddr:{}",groupName,topics,namesrvAddr));
+            System.out.println(String.format("consumer is start !!! groupName:{%s},topics:{%s},namesrvAddr:{%s}",groupName,topics,namesrvAddr));
             //logger.info("consumer is start !!! groupName:{},topics:{},namesrvAddr:{}",groupName,topics,namesrvAddr);
 
         } catch (Exception e) {
