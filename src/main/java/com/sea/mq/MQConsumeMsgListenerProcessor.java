@@ -15,7 +15,7 @@ public class MQConsumeMsgListenerProcessor implements MessageListenerConcurrentl
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
         try {
-            TimeUnit.MILLISECONDS.sleep(5005);
+            TimeUnit.MILLISECONDS.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

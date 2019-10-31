@@ -26,7 +26,7 @@ public class SpringbootRocketmqApplicationTests {
 //        Message message = new Message("DemoTopic2", "*", msg.getBytes());
 //        SendResult send = defaultMQProducer.send(message);
         for (int i = 0; i < 50; i++) {
-            Message message = new Message("DemoTopic2", "*", (msg+i).getBytes());
+            Message message = new Message("DemoTopic2", "*", (msg+"(hello)"+i).getBytes());
             SendResult send = defaultMQProducer.send(message);
             System.out.println(send.toString());
         }
