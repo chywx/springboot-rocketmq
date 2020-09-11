@@ -27,9 +27,9 @@ public class SendController {
     public String sendTest() throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         String msg = "haha";
         for (int i = 0; i < 50; i++) {
-            Message message = new Message("DemoTopic2", "*", (msg+i).getBytes());
+            Message message = new Message("DemoTopic-chy8", "*", (msg + i).getBytes());
             SendResult send = defaultMQProducer.send(message);
-            System.out.println("发送的消息："+ send.toString());
+            System.out.println("发送的消息：" + send.toString());
         }
         return "success";
     }
