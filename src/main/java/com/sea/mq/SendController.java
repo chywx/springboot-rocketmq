@@ -27,7 +27,7 @@ public class SendController {
     public String sendTest() throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         String msg = "haha";
         for (int i = 0; i < 50; i++) {
-            Message message = new Message("25552DemoTopic-chy5", "*", (msg + i).getBytes());
+            Message message = new Message("RocketMq-Topic-chy1", "*", (msg + i).getBytes());
             SendResult send = defaultMQProducer.send(message);
             System.out.println("发送的消息：" + send.toString());
         }
